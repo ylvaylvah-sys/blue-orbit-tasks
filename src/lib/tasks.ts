@@ -40,7 +40,9 @@ export const PRIORITIES: { id: Priority; label: string }[] = [
 ];
 
 export function categoryById(id: CategoryId): Category {
-  return CATEGORIES.find((c) => c.id === id) ?? CATEGORIES[0];
+  const found = CATEGORIES.find((c) => c.id === id);
+  if (found) return found;
+  return CATEGORIES[0]!;
 }
 
 const STORAGE_KEY = "nebula-tasks-v1";
